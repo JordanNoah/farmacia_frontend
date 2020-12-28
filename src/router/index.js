@@ -1,22 +1,50 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Measure from '../views/Measure.vue'
+import Laboratory from '../views/Laboratory.vue'
+import Inventario from '../views/Inventario.vue'
+import Cashier from '../views/Cashier.vue'
+import Registry from '../views/Registry.vue'
+import Drug from '../views/Drug.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'/inventario',
+    name:'Inventario',
+    component:Inventario
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path:'/drug',
+    name:'Drug',
+    component:Drug
+  },
+  {
+    path:'/measure',
+    name:'Measure',
+    component:Measure
+  },
+  {
+    path:'/laboratory',
+    name:'Laboratory',
+    component:Laboratory
+  },
+  {
+    path:'/cashier',
+    name:'Cashier',
+    component:Cashier
+  },
+  {
+    path:'/registry',
+    name:'Registry',
+    component:Registry,
+    children:[
+      {
+        path:'cashier/:id',
+        name:'RegistryCashier',
+      }
+    ]
   }
 ]
 
